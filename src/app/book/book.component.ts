@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class BookComponent implements OnInit {
    date: string;
     alert: boolean ;
-
+   showMyMessage = false;
 
    constructor() {
    setInterval(() => {
@@ -16,11 +16,17 @@ export class BookComponent implements OnInit {
      this.date = currentDate.toString() + "" + currentDate.toLocaleTimeString();
 
    }, 1000);
-   
+
 
 
 }
  ngOnInit(): void {
   }
+
+  showMessageSoon() {
+  setTimeout(() => {
+    this.showMyMessage = true;
+  }, 100);
+}
 
 }

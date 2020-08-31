@@ -9,8 +9,8 @@ export class LoginComponent implements OnInit {
   res = {};
 url = 'http://localhost:8080/api/user';
 
- serverName = '';
- serverPassword = '';
+ email   = '';
+ Password = '';
  allowServer = false;
  serverCreationStatus = 'no server is created';
  serverCreated = false;
@@ -18,14 +18,7 @@ url = 'http://localhost:8080/api/user';
 
 
 
-  constructor(private http: HttpClient) {
-   setTimeout(() =>
-   {
-     this.allowServer = true;
-   }, 2000);
-
-
-   }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
   }
@@ -33,31 +26,37 @@ url = 'http://localhost:8080/api/user';
   oncreateServer()
   {
     this.serverCreated = true;
-    this.servers.push(this.serverName, this.serverPassword);
-    this.serverCreationStatus = 'server is created: ' + this.serverName;
+    this.servers.push(this.email, this.Password);
+    this.serverCreationStatus = 'server is created: ' + this.email;
   }
-
-
 
 
 
 
   getAuth()
   {
-   let obs = this.http.get(this.url);
+   const obs = this.http.get(this.url);
    obs.subscribe((response) => {
-     this.res = JSON.stringify(response);
-   for(let i=0; i<Object.keys(response).length ; i++)
+   this.res = response;
+   for (let i = 0; i < Object.keys(response).length ; i++)
    {
-     if(response[i] === this.serverName[i])
-     {
-       console.log('found!!');
-     }
-     else
-     {
-       console.log('not found');
-     }
-      }
-   });
+    console.log(response[i].user_email);
+    if (this.email === response[i].user_email)
+    {
+      window.location.href = 'http://localhost:4200/booking';
+    }
+    else
+    {
+      console.log('error');
+    }
+   }
+
+      });
+   }
   }
-}
+
+
+
+
+
+

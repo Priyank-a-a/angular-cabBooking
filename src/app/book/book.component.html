@@ -24,8 +24,9 @@
 
     <div class="form-div">
 
-      <marquee><i class="fas fa-car fa-3x"></i></marquee>
+      
     <form name ="myform">
+    <marquee><i class="fas fa-car fa-3x"></i></marquee>
 
   <div class="form-group">
     <label for="source">Source</label>
@@ -46,7 +47,8 @@
 
   </div>
   <!--<a href="http://localhost:4200/confirmation">BOOK</a>-->
-<button onClick="show_alert();" class="btn btn-primary">Book</button>
+<button (click)="showMessageSoon()" class="btn btn-primary">Book</button>
+<p *ngIf="showMyMessage">Booked Successfully!!</p>
 
 </form>
 <script type="text/javascript">

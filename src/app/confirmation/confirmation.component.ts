@@ -7,13 +7,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent implements OnInit {
-  res = {};
- // url = 'https://api.github.com/users';
+ res = {};
  url = 'http://localhost:8080/api/user';
  constructor(private http: HttpClient ) { }
 
   ngOnInit(): void {
   }
+
+
 
   getData()
   {
@@ -22,26 +23,6 @@ export class ConfirmationComponent implements OnInit {
       console.log(response);
     });
   }
-  
-
-
-
-
-  /*getData()
-  {
-    let obs = this.http.get(this.url);
-    obs.subscribe((response) =>{
-    // 1. this.res = JSON.stringify(response)
-   // 2. console.log(response[0].login)
-   // 3.
-
-   for(let i = 0 ; i < Object.keys(response).length ; i++)
-   {
-     console.log(response[i].login);
-   }
-  }
-  );
-  }*/
 
 
 
